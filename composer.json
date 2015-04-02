@@ -1,0 +1,22 @@
+{
+    "name": "nikapps/ortc-php",
+    "description": "A PHP API wrapper for ortc (RealTime.co)",
+    "require": {
+        "guzzlehttp/guzzle": "~5.2"
+    },
+    "require-dev": {
+        "codeception/codeception": "~2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ali Borhani",
+            "email": "aliborhani1@gmail.com"
+        },
+	{
+            "name": "Hossein Moradgholi",
+            "email": "h.moradgholi@icloud.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
