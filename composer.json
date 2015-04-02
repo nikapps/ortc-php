@@ -18,5 +18,8 @@
             "email": "h.moradgholi@icloud.com"
         }
     ],
+    "psr-4": {
+            "Nikapps\\OrtcPhp\\": "src/"
+    }
     "minimum-stability": "stable"
 }
