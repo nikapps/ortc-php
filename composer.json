@@ -20,6 +20,6 @@
     ],
     "psr-4": {
             "Nikapps\\OrtcPhp\\": "src/"
-    }
+    },
     "minimum-stability": "stable"
 }
