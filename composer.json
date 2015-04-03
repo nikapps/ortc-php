@@ -8,7 +8,7 @@
         "API",
         "Wrapper",
         "XRTML",
-        "pub/sub",
+        "pub-sub",
         "push",
         "publish",
         "real-time"
