@@ -160,6 +160,7 @@ http://www.xrtml.org/downloads#pubsub:php
 * subscribe channel(s) by Ratchet/Nodejs
 * support mobile push notification (ios & android)
 * support presence channels
+* create package for Laravel 4/5
 * Anything else?!
 
 ## Contribute
