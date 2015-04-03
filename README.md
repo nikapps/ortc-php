@@ -141,8 +141,8 @@ $ortc->sendMessage($sendMessageRequest);
 * [Uuid 2.8.x](https://packagist.org/packages/rhumsaa/uuid)
 
 
-## Ortc Documentations
-This package is based on ORTC REST API. You can downlnoad REST service documentation from this url:
+## Ortc Documentation
+This package is based on ORTC REST API. You can download REST service documentation from this url:
 
 ```
 http://messaging-public.realtime.co/documentation/rest/2.1.0/RestServices.pdf
@@ -153,6 +153,9 @@ Also, you can download official ORTC library for PHP from this url:
 ```
 http://messaging-public.realtime.co/api/download/php/2.1.0/ApiPhp.zip
 ```
+## Framework Integrations
+
+* **Laravel 4:** [nikapps/ortc-laravel](https://github.com/nikapps/ortc-laravel)
 
 ## TODO
 
@@ -160,7 +163,7 @@ http://messaging-public.realtime.co/api/download/php/2.1.0/ApiPhp.zip
 * subscribe channel(s) by Ratchet/Nodejs
 * support mobile push notification (ios & android)
 * support presence channels
-* create package for Laravel 4/5
+* create package for Laravel 5
 * Anything else?!
 
 ## Contribute
