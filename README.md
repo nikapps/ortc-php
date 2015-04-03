@@ -1,6 +1,6 @@
 # ORTC-PHP (PHP API Client for Realtime.co)
 
-It's an unofficial client for [ORTC](http://framework.realtime.co/messaging) (Open Real-Time Connectivity, realtime & cloud-based pub/sub framework from [realtime.co](http://www.realtime.co) API for PHP (5.4+), but yet powerful, composer based and compatible with psr-1, psr-2 and psr-4.
+It's an unofficial client for [ORTC](http://framework.realtime.co/messaging) (Open Real-Time Connectivity, realtime & cloud-based pub/sub framework from [realtime.co](http://www.realtime.co) for PHP 5.4+), but yet powerful, composer based and compatible with psr-1, psr-2 and psr-4.
 
 ## Installation
 Using composer, install this [package](https://packagist.org/packages/nikapps/ortc-php) by running this command:
