@@ -58,11 +58,11 @@ In order to authenticate a user:
 First, you should create your channels:
 
 ~~~php
-$channelOne = new Channel();
+$channelOne = new \Nikapps\OrtcPhp\Models\Channel();
 $channelOne->setName('CHANNEL_ONE_NAME');
 $ChannelOne->setPermission(Channel::PERMISSION_WRITE);
 
-$channelTwo = new Channel();
+$channelTwo = new \Nikapps\OrtcPhp\Models\Channel();
 $channelTwo->setName('CHANNEL_TWO_NAME');
 $channelTwo->setPermission(Channel::PERMISSION_READ);
 
@@ -145,13 +145,13 @@ $ortc->sendMessage($sendMessageRequest);
 This package is based on ORTC REST API. You can downlnoad REST service documentation from this url:
 
 ```
-http://ortc.xrtml.org/documentation/rest/2.1.0/RestServices.pdf
+http://messaging-public.realtime.co/documentation/rest/2.1.0/RestServices.pdf
 ```
 
 Also, you can download official ORTC library for PHP from this url:
 
 ```
-http://www.xrtml.org/downloads#pubsub:php
+http://messaging-public.realtime.co/api/download/php/2.1.0/ApiPhp.zip
 ```
 
 ## TODO
