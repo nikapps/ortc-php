@@ -11,6 +11,10 @@ class Authenticate
      * Write permission
      */
     const WRITE = 'w';
+    /**
+     * Presence permission
+     */
+    const PRESENCE = 'p';
 
     /**
      * Authentication token
@@ -107,7 +111,7 @@ class Authenticate
      * Add channel with its permission
      *
      * @param string $name
-     * @param string $permission ('r' for read / 'w' for write)
+     * @param string $permission ('r' for read / 'w' for write / 'p' for presence )
      * @return $this
      */
     public function addChannel($name, $permission = self::READ)

@@ -3,11 +3,16 @@ namespace Nikapps\Ortc;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Pool;
+use GuzzleHttp\Promise\Promise;
+use GuzzleHttp\Psr7\Request;
 use Nikapps\Ortc\Config\Config;
+use Nikapps\Ortc\Exceptions\FailedSendingMessageException;
 use Nikapps\Ortc\Exceptions\UnauthorizedException;
 use Nikapps\Ortc\Exceptions\InvalidServerUrlException;
 use Nikapps\Ortc\Exceptions\NetworkErrorException;
 use Nikapps\Ortc\Requests\Authenticate;
+use Nikapps\Ortc\Requests\Message;
 
 class Ortc
 {
@@ -123,6 +128,38 @@ class Ortc
             throw (new NetworkErrorException($e->getMessage()))
                 ->setGuzzleException($e);
         }
+    }
+
+    /**
+     * Send message
+     *
+     * @param Message $message
+     * @return bool
+     * @throws FailedSendingMessageException
+     */
+    public function send(Message $message)
+    {
+
+        $this->prepare();
+
+        $promises = array_map(function ($chunk) {
+
+            return $this->client->postAsync($this->config->getSendEndpoint(), [
+                'base_uri' => $this->baseUrl,
+                'form_params' => array_merge($chunk, $this->getCredentials())
+            ]);
+
+        }, $message->toChunks());
+
+        try {
+            \GuzzleHttp\Promise\unwrap($promises);
+            return true;
+
+        } catch (\Exception $e) {
+            throw (new FailedSendingMessageException)
+                ->setException($e);
+        }
+
     }
 
     /**

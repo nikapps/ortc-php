@@ -11,7 +11,8 @@ class Config
     private $serverUrl = 'https://ortc-developers.realtime.co/server/2.1?appkey=abcde1';
 
     private $endpoints = [
-        'authentication' => '/authenticate'
+        'authentication' => '/authenticate',
+        'send' => '/send'
     ];
 
     /**
@@ -122,6 +123,25 @@ class Config
     public function getAuthenticationEndpoint()
     {
         return $this->endpoints['authentication'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getSendEndpoint()
+    {
+        return $this->endpoints['send'];
+    }
+
+    /**
+     * @param string $url
+     * @return $this
+     */
+    public function sendEndpoint($url)
+    {
+        $this->endpoints['send'] = $url;
+
+        return $this;
     }
 
 
