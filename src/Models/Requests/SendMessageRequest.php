@@ -3,7 +3,7 @@ namespace Nikapps\OrtcPhp\Models\Requests;
 
 use Nikapps\OrtcPhp\Handlers\OrtcResponseHandler;
 use Nikapps\OrtcPhp\Handlers\SendMessageResponseHandler;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 class SendMessageRequest extends OrtcRequest
 {
