@@ -16,8 +16,9 @@ class BalancerUrlRequest extends OrtcRequest
     {
         $pathUrl = strtr(
             $this->getOrtcConfig()->getBalancerUrl(),
-            '{APP_KEY}',
-            $this->getOrtcConfig()->getApplicationKey()
+            [
+                '{APP_KEY}' => $this->getOrtcConfig()->getApplicationKey(),
+            ]
         );
 
         return $pathUrl;
