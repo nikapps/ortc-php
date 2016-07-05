@@ -23,7 +23,8 @@
         "ramsey/uuid": "^3.4"
     },
     "require-dev": {
-        "codeception/codeception": "~2.0"
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0"
     },
     "authors": [
         {
@@ -38,6 +39,11 @@
     "autoload": {
         "psr-4": {
             "Nikapps\\OrtcPhp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable"
