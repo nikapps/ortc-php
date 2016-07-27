@@ -3,9 +3,20 @@ namespace Nikapps\OrtcPhp\Models;
 
 class Channel
 {
-
     const PERMISSION_WRITE = 'w';
     const PERMISSION_READ = 'r';
+
+    /**
+     * Construct
+     *
+     * @param string $name
+     * @param string $permission
+     */
+    public function __construct($name = null, $permission = self::PERMISSION_READ)
+    {
+        $this->setName($name);
+        $this->setPermission($permission);
+    }
 
     /**
      * name of channel
@@ -57,5 +68,15 @@ class Channel
         $this->permission = $permission;
 
         return $this;
+    }
+
+    /**
+     * To string returned name
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
