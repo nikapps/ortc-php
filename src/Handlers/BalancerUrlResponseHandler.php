@@ -36,7 +36,7 @@ class BalancerUrlResponseHandler extends OrtcResponseHandler
      */
     public function validate($url)
     {
-        if ($url == 'http://undefined:undefined') {
+        if (preg_match('/https?:\/\/undefined(:undefined)?/', $url)) {
             $invalidBalancerUrlException = new InvalidBalancerUrlException();
             $invalidBalancerUrlException->setUrl($url);
 
@@ -67,6 +67,6 @@ class BalancerUrlResponseHandler extends OrtcResponseHandler
             throw $invalidBalancerUrlException;
         }
 
-        return $matches[0];
+        return trim($matches[0]);
     }
 }
