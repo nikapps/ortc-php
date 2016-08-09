@@ -193,7 +193,7 @@ class OrtcConfig
      */
     public function setVerifySsl($verifySsl)
     {
-        $this->verifySsl = $verifySsl;
+        $this->verifySsl = (bool) $verifySsl;
     }
 
     /**
