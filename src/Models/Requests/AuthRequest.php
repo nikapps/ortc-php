@@ -148,7 +148,7 @@ class AuthRequest extends OrtcRequest
      */
     public function setPrivate($private)
     {
-        $this->private = $private;
+        $this->private = (bool) $private;
 
         return $this;
     }
