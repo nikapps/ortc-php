@@ -22,6 +22,6 @@ class AuthResponse extends OrtcResponse
      */
     public function setFailed($failed)
     {
-        $this->failed = $failed;
+        $this->failed = (bool) $failed;
     }
 }
