@@ -2,18 +2,16 @@
 namespace Tests;
 
 use Mockery as m;
-use Nikapps\OrtcPhp\Configs\OrtcConfig;
-use Nikapps\OrtcPhp\OrtcClient;
 use Nikapps\OrtcPhp\Ortc;
 
 class OrtcTest extends TestCase
 {
     public function testImplementsAndSettersGetters()
     {
-        $ortcConfig = m::mock(OrtcConfig::class);
+        $ortcConfig = m::mock('Nikapps\OrtcPhp\Configs\OrtcConfig');
 
         $guzzleClient = m::mock('GuzzleHttp\Client');
-        $ortcClient = m::mock(OrtcClient::class);
+        $ortcClient = m::mock('Nikapps\OrtcPhp\OrtcClient');
         $ortcClient->shouldReceive('getGuzzleClient')->once()->andReturn($guzzleClient);
 
         $ortc = new Ortc($ortcConfig, $ortcClient);
@@ -28,7 +26,7 @@ class OrtcTest extends TestCase
 
     public function testGetBalancerUrl()
     {
-        $ortcConfig = m::mock(OrtcConfig::class);
+        $ortcConfig = m::mock('Nikapps\OrtcPhp\Configs\OrtcConfig');
 
         $responseUrl = m::mock('Nikapps\OrtcPhp\Models\Responses\OrtcResponse');
         $ortcClient = $this->mockClientBalancerUrlRequest($responseUrl);
@@ -46,7 +44,7 @@ class OrtcTest extends TestCase
         $responseUrl->shouldReceive('getUrl')->once()->andReturn('https://new.url.com');
         $ortcClient = $this->mockClientBalancerUrlRequest($responseUrl);
 
-        $ortcConfig = m::mock(OrtcConfig::class);
+        $ortcConfig = m::mock('Nikapps\OrtcPhp\Configs\OrtcConfig');
         $requestAuth = m::mock('Nikapps\OrtcPhp\Models\Requests\AuthRequest');
         $requestAuth->shouldReceive('setOrtcConfig')->once()->with($ortcConfig);
 
@@ -63,13 +61,13 @@ class OrtcTest extends TestCase
 
     public function testAuthenticateWithoutPrepare()
     {
-        $ortcConfig = m::mock(OrtcConfig::class);
+        $ortcConfig = m::mock('Nikapps\OrtcPhp\Configs\OrtcConfig');
 
         $requestAuth = m::mock('Nikapps\OrtcPhp\Models\Requests\AuthRequest');
         $requestAuth->shouldReceive('setOrtcConfig')->once()->with($ortcConfig);
 
         $response = m::mock('Nikapps\OrtcPhp\Models\Responses\AuthResponse');
-        $ortcClient = m::mock(OrtcClient::class);
+        $ortcClient = m::mock('Nikapps\OrtcPhp\OrtcClient');
         $ortcClient->shouldReceive('setRequest')->once()->with($requestAuth);
         $ortcClient->shouldReceive('setBaseUrl')->once()->with('https://foo.bar');
         $ortcClient->shouldReceive('execute')->once()->andReturn($response);
@@ -83,13 +81,13 @@ class OrtcTest extends TestCase
 
     public function testSendMessageWithoutPrepare()
     {
-        $ortcConfig = m::mock(OrtcConfig::class);
+        $ortcConfig = m::mock('Nikapps\OrtcPhp\Configs\OrtcConfig');
 
         $requestSendMessage = m::mock('Nikapps\OrtcPhp\Models\Requests\SendMessageRequest');
         $requestSendMessage->shouldReceive('setOrtcConfig')->once()->with($ortcConfig);
 
         $response = m::mock('Nikapps\OrtcPhp\Models\Responses\SendMessageResponse');
-        $ortcClient = m::mock(OrtcClient::class);
+        $ortcClient = m::mock('Nikapps\OrtcPhp\OrtcClient');
         $ortcClient->shouldReceive('setRequest')->once()->with($requestSendMessage);
         $ortcClient->shouldReceive('setBaseUrl')->once()->with('https://foo.bar');
         $ortcClient->shouldReceive('batchExecute')->once()->andReturn($response);
@@ -105,7 +103,7 @@ class OrtcTest extends TestCase
     {
         $self = $this;
 
-        $ortcClient = m::mock(OrtcClient::class);
+        $ortcClient = m::mock('Nikapps\OrtcPhp\OrtcClient');
         $ortcClient->shouldReceive('setRequest')
             ->once()
             ->ordered()

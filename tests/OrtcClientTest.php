@@ -2,8 +2,6 @@
 namespace Tests;
 
 use Mockery as m;
-use GuzzleHttp\Client as GuzzleClient;
-use Nikapps\OrtcPhp\Models\Requests\OrtcRequest;
 use Nikapps\OrtcPhp\OrtcClient;
 use Nikapps\OrtcPhp\Configs\OrtcConfig;
 
@@ -11,8 +9,8 @@ class OrtcClientTest extends TestCase
 {
     public function testImplementsAndSettersGetters()
     {
-        $guzzleClient = m::mock(GuzzleClient::class);
-        $ortcRequest = m::mock(OrtcRequest::class);
+        $guzzleClient = m::mock('GuzzleHttp\Client');
+        $ortcRequest = m::mock('Nikapps\OrtcPhp\Models\Requests\OrtcRequest');
 
         $ortcClient = new OrtcClient($guzzleClient);
         $ortcClient->setRequest($ortcRequest);
@@ -34,8 +32,8 @@ class OrtcClientTest extends TestCase
         $exception = m::mock('GuzzleHttp\Exception\ClientException');
         $exception->shouldReceive('getResponse')->once()->andReturn($responseException);
 
-        $guzzleClient = m::mock(GuzzleClient::class);
-        $ortcRequest = m::mock(OrtcRequest::class);
+        $guzzleClient = m::mock('GuzzleHttp\Client');
+        $ortcRequest = m::mock('Nikapps\OrtcPhp\Models\Requests\OrtcRequest');
         $ortcRequest->shouldReceive('isPost')->once()->andThrow($exception);
 
         $ortcClient = new OrtcClient($guzzleClient);
@@ -54,8 +52,8 @@ class OrtcClientTest extends TestCase
         $exception = m::mock('GuzzleHttp\Exception\ClientException');
         $exception->shouldReceive('getResponse')->once()->andReturn($responseException);
 
-        $guzzleClient = m::mock(GuzzleClient::class);
-        $ortcRequest = m::mock(OrtcRequest::class);
+        $guzzleClient = m::mock('GuzzleHttp\Client');
+        $ortcRequest = m::mock('Nikapps\OrtcPhp\Models\Requests\OrtcRequest');
         $ortcRequest->shouldReceive('isPost')->once()->andThrow($exception);
         
         $ortcClient = new OrtcClient($guzzleClient);
@@ -73,7 +71,7 @@ class OrtcClientTest extends TestCase
         $responseHandler = m::mock('OrtcResponseHandler');
         $responseHandler->shouldReceive('handle')->once()->with('{document: [response]}')->andReturn($ortcResponse);
 
-        $ortcRequest = m::mock(OrtcRequest::class);
+        $ortcRequest = m::mock('Nikapps\OrtcPhp\Models\Requests\OrtcRequest');
         $ortcRequest->shouldReceive('isPost')->once()->andReturn(true);
         $ortcRequest->shouldReceive('isUrlAbsolute')->once()->andReturn(true);
         $ortcRequest->shouldReceive('getUrlPath')->once()->andReturn('https://local/auth');
@@ -83,7 +81,7 @@ class OrtcClientTest extends TestCase
 
         $guzzleRequest = m::mock('GuzzleHttp\Message\Request');
 
-        $guzzleClient = m::mock(GuzzleClient::class);
+        $guzzleClient = m::mock('GuzzleHttp\Client');
         $guzzleClient
             ->shouldReceive('createRequest')
             ->once()
@@ -111,7 +109,7 @@ class OrtcClientTest extends TestCase
         $responseHandler = m::mock('OrtcResponseHandler');
         $responseHandler->shouldReceive('handle')->once()->with('{document: [response]}')->andReturn($ortcResponse);
 
-        $ortcRequest = m::mock(OrtcRequest::class);
+        $ortcRequest = m::mock('Nikapps\OrtcPhp\Models\Requests\OrtcRequest');
         $ortcRequest->shouldReceive('isPost')->once()->andReturn(false);
         $ortcRequest->shouldReceive('isUrlAbsolute')->once()->andReturn(false);
         $ortcRequest->shouldReceive('getUrlPath')->once()->andReturn('http://localhost/authentication');
@@ -121,7 +119,7 @@ class OrtcClientTest extends TestCase
 
         $guzzleRequest = m::mock('GuzzleHttp\Message\Request');
 
-        $guzzleClient = m::mock(GuzzleClient::class);
+        $guzzleClient = m::mock('GuzzleHttp\Client');
         $guzzleClient
             ->shouldReceive('createRequest')
             ->once()
@@ -152,7 +150,7 @@ class OrtcClientTest extends TestCase
         $futureResponse = m::mock('GuzzleHttp\Message\FutureResponse');
         $futureResponse->shouldReceive('promise')->once()->andReturn($promise);
 
-        $ortcRequest = m::mock(OrtcRequest::class);
+        $ortcRequest = m::mock('Nikapps\OrtcPhp\Models\Requests\OrtcRequest');
         $ortcRequest->shouldReceive('isUrlAbsolute')->once()->andReturn(true);
         $ortcRequest->shouldReceive('getUrlPath')->once()->andReturn('https://local/auth');
         $ortcRequest->shouldReceive('getPostData')->once()->andReturn(['foo' => 'bar']);
@@ -161,7 +159,7 @@ class OrtcClientTest extends TestCase
 
         $guzzleRequest = new \GuzzleHttp\Message\Request('POST', 'https://local/auth');
 
-        $guzzleClient = m::mock(GuzzleClient::class);
+        $guzzleClient = m::mock('GuzzleHttp\Client');
         $guzzleClient
             ->shouldReceive('createRequest')
             ->once()
@@ -199,7 +197,7 @@ class OrtcClientTest extends TestCase
         $responseHandler = m::mock('OrtcResponseHandler');
         $responseHandler->shouldReceive('handle')->once()->andReturn($ortcResponse);
 
-        $ortcRequest = m::mock(OrtcRequest::class);
+        $ortcRequest = m::mock('Nikapps\OrtcPhp\Models\Requests\OrtcRequest');
         $ortcRequest->shouldReceive('isUrlAbsolute')->once()->andReturn(true);
         $ortcRequest->shouldReceive('getUrlPath')->once()->andReturn('https://local/auth');
         $ortcRequest->shouldReceive('getPostData')->once()->andReturn(['foo' => 'bar']);
@@ -208,7 +206,7 @@ class OrtcClientTest extends TestCase
 
         $guzzleRequest = new \GuzzleHttp\Message\Request('POST', 'https://local/auth');
 
-        $guzzleClient = m::mock(GuzzleClient::class);
+        $guzzleClient = m::mock('GuzzleHttp\Client');
         $guzzleClient
             ->shouldReceive('createRequest')
             ->once()
