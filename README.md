@@ -160,7 +160,7 @@ http://messaging-public.realtime.co/api/download/php/2.1.0/ApiPhp.zip
 ```
 ## Framework Integrations
 
-* **Laravel 4:** [nikapps/ortc-laravel](https://github.com/nikapps/ortc-laravel)
+* **Laravel 4/5:** [nikapps/ortc-laravel](https://github.com/nikapps/ortc-laravel)
 
 ## TODO
 
