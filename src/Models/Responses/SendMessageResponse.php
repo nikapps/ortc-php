@@ -1,11 +1,11 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Models\Responses;
 
 use GuzzleHttp\BatchResults;
 
 class SendMessageResponse extends OrtcResponse
 {
-
     /**
      * @var BatchResults
      */

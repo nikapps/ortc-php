@@ -1,15 +1,16 @@
 <?php
+
 namespace Tests\Handlers;
 
 use Mockery as m;
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Handlers\SendMessageResponseHandler;
+use Tests\TestCase;
 
 class SendMessageResponseHandlerTest extends TestCase
 {
     public function testImplementsAndHandle()
     {
-        $handler = new SendMessageResponseHandler;
+        $handler = new SendMessageResponseHandler();
         $this->assertInstanceOf('Nikapps\OrtcPhp\Handlers\OrtcResponseHandler', $handler);
 
         $results = m::mock('GuzzleHttp\BatchResults');

@@ -1,4 +1,5 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Models\Requests;
 
 use Nikapps\OrtcPhp\Handlers\OrtcResponseHandler;
@@ -7,31 +8,29 @@ use Ramsey\Uuid\Uuid;
 
 class SendMessageRequest extends OrtcRequest
 {
-
     /**
-     * authentication token
+     * authentication token.
      *
      * @var string
      */
     private $authToken;
 
     /**
-     * channel name
+     * channel name.
      *
      * @var string
      */
     private $channelName;
 
     /**
-     * message
+     * message.
      *
      * @var string
      */
     private $message;
 
-
     /**
-     * get url path (not base url)
+     * get url path (not base url).
      *
      * @return string
      */
@@ -51,7 +50,7 @@ class SendMessageRequest extends OrtcRequest
     }
 
     /**
-     * get post body
+     * get post body.
      *
      * @return array
      */
@@ -67,7 +66,7 @@ class SendMessageRequest extends OrtcRequest
                 'PK' => $this->getOrtcConfig()->getPrivateKey(),
                 'AT' => $this->getAuthToken(),
                 'C'  => $this->getChannelName(),
-                'M'  => $chunk
+                'M'  => $chunk,
             ];
         }
 
@@ -75,7 +74,7 @@ class SendMessageRequest extends OrtcRequest
     }
 
     /**
-     * split the message into chunks
+     * split the message into chunks.
      *
      * @return array
      */
@@ -94,11 +93,11 @@ class SendMessageRequest extends OrtcRequest
                 [
                     '{RANDOM}'      => $randomString,
                     '{PART}'        => $i + 1,
-                    '{TOTAL_PARTS}' => $numberOfParts
+                    '{TOTAL_PARTS}' => $numberOfParts,
                 ]
             );
 
-            $chunks[$i] = $preString . $chunks[$i];
+            $chunks[$i] = $preString.$chunks[$i];
         }
 
         return $chunks;
@@ -114,6 +113,7 @@ class SendMessageRequest extends OrtcRequest
 
     /**
      * @param string $message
+     *
      * @return $this
      */
     public function setMessage($message)
@@ -133,6 +133,7 @@ class SendMessageRequest extends OrtcRequest
 
     /**
      * @param string $authToken
+     *
      * @return $this
      */
     public function setAuthToken($authToken)
@@ -152,6 +153,7 @@ class SendMessageRequest extends OrtcRequest
 
     /**
      * @param string $channelName
+     *
      * @return $this
      */
     public function setChannelName($channelName)
@@ -162,7 +164,7 @@ class SendMessageRequest extends OrtcRequest
     }
 
     /**
-     * get response handler
+     * get response handler.
      *
      * @return OrtcResponseHandler
      */

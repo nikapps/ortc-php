@@ -1,8 +1,9 @@
 <?php
+
 namespace Tests\Configs;
 
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Configs\OrtcConfig;
+use Tests\TestCase;
 
 class OrtcConfigTest extends TestCase
 {
@@ -11,9 +12,9 @@ class OrtcConfigTest extends TestCase
      */
     public function testAttributesDefault($attribute, $value)
     {
-        $ortcConfig = new OrtcConfig;
+        $ortcConfig = new OrtcConfig();
 
-        $methodGet = "get".ucfirst($attribute);
+        $methodGet = 'get'.ucfirst($attribute);
         $this->assertEquals($value, $ortcConfig->{$methodGet}());
         $this->assertAttributeEquals($value, $attribute, $ortcConfig);
     }
@@ -37,12 +38,12 @@ class OrtcConfigTest extends TestCase
      */
     public function testSetAttributes($attribute, $value)
     {
-        $ortcConfig = new OrtcConfig;
+        $ortcConfig = new OrtcConfig();
 
-        $methodSet = "set".ucfirst($attribute);
+        $methodSet = 'set'.ucfirst($attribute);
         $ortcConfig->{$methodSet}($value);
-        
-        $methodGet = "get".ucfirst($attribute);
+
+        $methodGet = 'get'.ucfirst($attribute);
         $this->assertEquals($value, $ortcConfig->{$methodGet}());
         $this->assertAttributeEquals($value, $attribute, $ortcConfig);
     }
@@ -63,7 +64,7 @@ class OrtcConfigTest extends TestCase
 
     public function testAttributeVerifySsl()
     {
-        $ortcConfig = new OrtcConfig;
+        $ortcConfig = new OrtcConfig();
 
         $this->assertTrue($ortcConfig->isVerifySsl());
         $this->assertAttributeEquals(true, 'verifySsl', $ortcConfig);

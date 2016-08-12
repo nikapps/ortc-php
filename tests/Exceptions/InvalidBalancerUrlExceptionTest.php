@@ -1,15 +1,16 @@
 <?php
+
 namespace Tests\Exceptions;
 
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Exceptions\InvalidBalancerUrlException;
+use Tests\TestCase;
 
 class InvalidBalancerUrlExceptionTest extends TestCase
 {
     public function testImplements()
     {
-        $exception = new InvalidBalancerUrlException;
-        $this->assertEquals("Balancer URL is invalid", $exception->getMessage());
+        $exception = new InvalidBalancerUrlException();
+        $this->assertEquals('Balancer URL is invalid', $exception->getMessage());
 
         $this->assertAttributeEquals(null, 'url', $exception);
         $this->assertEquals(null, $exception->getUrl());

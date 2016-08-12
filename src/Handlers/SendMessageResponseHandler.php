@@ -1,17 +1,17 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Handlers;
 
 use GuzzleHttp\BatchResults;
-use Nikapps\OrtcPhp\Models\Responses\OrtcResponse;
 use Nikapps\OrtcPhp\Models\Responses\SendMessageResponse;
 
 class SendMessageResponseHandler extends OrtcResponseHandler
 {
-
     /**
-     * handle response from guzzle
+     * handle response from guzzle.
      *
      * @param BatchResults $results
+     *
      * @return SendMessageResponse
      */
     public function handle($results)

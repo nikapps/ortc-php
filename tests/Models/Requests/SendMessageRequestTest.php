@@ -1,19 +1,20 @@
 <?php
+
 namespace Tests\Models\Requests;
 
 use Mockery as m;
-use Tests\TestCase;
-use Nikapps\OrtcPhp\Models\Requests\SendMessageRequest;
 use Nikapps\OrtcPhp\Configs\OrtcConfig;
+use Nikapps\OrtcPhp\Models\Requests\SendMessageRequest;
+use Tests\TestCase;
 
 class SendMessageRequestTest extends TestCase
 {
     public function testImplementsDefault()
     {
-        $ortcConfig = new OrtcConfig;
+        $ortcConfig = new OrtcConfig();
         $ortcConfig->setApplicationKey('FOoB1r');
 
-        $request = new SendMessageRequest;
+        $request = new SendMessageRequest();
         $request->setOrtcConfig($ortcConfig);
 
         $this->assertInstanceOf('Nikapps\OrtcPhp\Models\Requests\OrtcRequest', $request);
@@ -28,12 +29,12 @@ class SendMessageRequestTest extends TestCase
      */
     public function testSetAndGetAttributes($attribute, $value)
     {
-        $request = new SendMessageRequest;
+        $request = new SendMessageRequest();
 
-        $methodSet = "set".ucfirst($attribute);
+        $methodSet = 'set'.ucfirst($attribute);
         $request->{$methodSet}($value);
-        
-        $methodGet = "get".ucfirst($attribute);
+
+        $methodGet = 'get'.ucfirst($attribute);
         $this->assertEquals($value, $request->{$methodGet}());
         $this->assertAttributeEquals($value, $attribute, $request);
     }
@@ -49,12 +50,12 @@ class SendMessageRequestTest extends TestCase
 
     public function testGetPostData()
     {
-        $ortcConfig = new OrtcConfig;
+        $ortcConfig = new OrtcConfig();
         $ortcConfig->setApplicationKey('abcede');
         $ortcConfig->setPrivateKey('123456');
         $ortcConfig->setMaxChunkSize(10);
 
-        $request = new SendMessageRequest;
+        $request = new SendMessageRequest();
         $request->setOrtcConfig($ortcConfig);
         $request->setAuthToken('wxyz123');
         $request->setMessage('{message:foo bar}');

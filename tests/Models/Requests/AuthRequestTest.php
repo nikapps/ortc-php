@@ -1,19 +1,19 @@
 <?php
+
 namespace Tests\Models\Requests;
 
-use Mockery as m;
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Configs\OrtcConfig;
-use Nikapps\OrtcPhp\Models\Requests\AuthRequest;
 use Nikapps\OrtcPhp\Models\Channel;
+use Nikapps\OrtcPhp\Models\Requests\AuthRequest;
+use Tests\TestCase;
 
 class AuthRequestTest extends TestCase
 {
     public function testImplementsDefault()
     {
-        $ortcConfig = new OrtcConfig;
+        $ortcConfig = new OrtcConfig();
 
-        $request = new AuthRequest;
+        $request = new AuthRequest();
         $request->setOrtcConfig($ortcConfig);
 
         $this->assertInstanceOf('Nikapps\OrtcPhp\Models\Requests\OrtcRequest', $request);
@@ -28,12 +28,12 @@ class AuthRequestTest extends TestCase
      */
     public function testSetAndGetAttributes($attribute, $value)
     {
-        $request = new AuthRequest;
+        $request = new AuthRequest();
 
-        $methodSet = "set".ucfirst($attribute);
+        $methodSet = 'set'.ucfirst($attribute);
         $request->{$methodSet}($value);
-        
-        $methodGet = "get".ucfirst($attribute);
+
+        $methodGet = 'get'.ucfirst($attribute);
         $this->assertEquals($value, $request->{$methodGet}());
         $this->assertAttributeEquals($value, $attribute, $request);
     }
@@ -49,7 +49,7 @@ class AuthRequestTest extends TestCase
 
     public function testAttributePrivate()
     {
-        $request = new AuthRequest;
+        $request = new AuthRequest();
         $this->assertFalse($request->isPrivate());
 
         $request->setPrivate(1);
@@ -58,23 +58,23 @@ class AuthRequestTest extends TestCase
 
     public function testGetPostData()
     {
-        $ortcConfig = new OrtcConfig;
+        $ortcConfig = new OrtcConfig();
         $ortcConfig->setApplicationKey('abcede');
         $ortcConfig->setPrivateKey('123456');
 
-        $request = new AuthRequest;
+        $request = new AuthRequest();
         $request->setOrtcConfig($ortcConfig);
         $request->setAuthToken('wxyz123');
         $request->setExpireTime(3600);
         $request->setChannels([new Channel('channel1', 'r'), new Channel('channel2', 'w')]);
 
         $expected = [
-            'AT'  => 'wxyz123',
-            'PVT' => 0,
-            'AK'  => 'abcede',
-            'TTL' => 3600,
-            'PK'  => '123456',
-            'TP'  => 2,
+            'AT'       => 'wxyz123',
+            'PVT'      => 0,
+            'AK'       => 'abcede',
+            'TTL'      => 3600,
+            'PK'       => '123456',
+            'TP'       => 2,
             'channel1' => 'r',
             'channel2' => 'w',
         ];

@@ -1,9 +1,9 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Models\Responses;
 
 class BalancerUrlResponse extends OrtcResponse
 {
-
     /**
      * @var string
      */

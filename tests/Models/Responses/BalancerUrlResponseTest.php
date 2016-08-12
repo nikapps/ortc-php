@@ -1,14 +1,15 @@
 <?php
+
 namespace Tests\Responses;
 
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Models\Responses\BalancerUrlResponse;
+use Tests\TestCase;
 
 class BalancerUrlResponseTest extends TestCase
 {
     public function testImplements()
     {
-        $response = new BalancerUrlResponse;
+        $response = new BalancerUrlResponse();
         $this->assertAttributeEquals(null, 'url', $response);
         $this->assertEquals(null, $response->getUrl());
 

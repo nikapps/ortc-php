@@ -1,4 +1,5 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Models\Requests;
 
 use Nikapps\OrtcPhp\Handlers\AuthResponseHandler;
@@ -7,23 +8,22 @@ use Nikapps\OrtcPhp\Models\Channel;
 
 class AuthRequest extends OrtcRequest
 {
-
     /**
-     * channels
+     * channels.
      *
      * @var Channel[]
      */
     private $channels;
 
     /**
-     * authentication token
+     * authentication token.
      *
      * @var string
      */
     private $authToken;
 
     /**
-     * expiration time (ttl) in seconds
+     * expiration time (ttl) in seconds.
      *
      * @var int
      */
@@ -35,7 +35,7 @@ class AuthRequest extends OrtcRequest
     private $private = false;
 
     /**
-     * get url path (not base url)
+     * get url path (not base url).
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class AuthRequest extends OrtcRequest
     }
 
     /**
-     * get post body
+     * get post body.
      *
      * @return array
      */
@@ -67,7 +67,7 @@ class AuthRequest extends OrtcRequest
             'AK'  => $this->getOrtcConfig()->getApplicationKey(),
             'TTL' => $this->getExpireTime(),
             'PK'  => $this->getOrtcConfig()->getPrivateKey(),
-            'TP'  => count($this->getChannels())
+            'TP'  => count($this->getChannels()),
         ];
 
         foreach ($this->getChannels() as $channel) {
@@ -87,6 +87,7 @@ class AuthRequest extends OrtcRequest
 
     /**
      * @param string $authToken
+     *
      * @return $this
      */
     public function setAuthToken($authToken)
@@ -106,6 +107,7 @@ class AuthRequest extends OrtcRequest
 
     /**
      * @param \Nikapps\OrtcPhp\Models\Channel[] $channels
+     *
      * @return $this
      */
     public function setChannels($channels)
@@ -125,6 +127,7 @@ class AuthRequest extends OrtcRequest
 
     /**
      * @param int $expireTime
+     *
      * @return $this
      */
     public function setExpireTime($expireTime)
@@ -135,7 +138,7 @@ class AuthRequest extends OrtcRequest
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isPrivate()
     {
@@ -143,7 +146,8 @@ class AuthRequest extends OrtcRequest
     }
 
     /**
-     * @param boolean $private
+     * @param bool $private
+     *
      * @return $this
      */
     public function setPrivate($private)
@@ -154,7 +158,7 @@ class AuthRequest extends OrtcRequest
     }
 
     /**
-     * get response handler
+     * get response handler.
      *
      * @return OrtcResponseHandler
      */

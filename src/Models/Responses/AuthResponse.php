@@ -1,16 +1,16 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Models\Responses;
 
 class AuthResponse extends OrtcResponse
 {
-
     /**
-     * @var boolean
+     * @var bool
      */
     private $failed = true;
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isFailed()
     {
@@ -18,7 +18,7 @@ class AuthResponse extends OrtcResponse
     }
 
     /**
-     * @param boolean $failed
+     * @param bool $failed
      */
     public function setFailed($failed)
     {

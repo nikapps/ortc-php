@@ -1,8 +1,9 @@
 <?php
+
 namespace Tests\Models;
 
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Models\Channel;
+use Tests\TestCase;
 
 class ChannelTest extends TestCase
 {
@@ -19,10 +20,10 @@ class ChannelTest extends TestCase
 
     public function testSetAndGetAttributes()
     {
-        $channel = new Channel;
+        $channel = new Channel();
         $this->assertEquals($channel, $channel->setName('channel_name'));
         $this->assertEquals($channel, $channel->setPermission(Channel::PERMISSION_READ));
-        
+
         $this->assertEquals('channel_name', $channel->getName());
         $this->assertEquals('r', $channel->getPermission());
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Models\Requests;
 
 use Nikapps\OrtcPhp\Handlers\BalancerUrlResponseHandler;
@@ -6,9 +7,8 @@ use Nikapps\OrtcPhp\Handlers\OrtcResponseHandler;
 
 class BalancerUrlRequest extends OrtcRequest
 {
-
     /**
-     * get url path (not base url)
+     * get url path (not base url).
      *
      * @return string
      */
@@ -35,7 +35,7 @@ class BalancerUrlRequest extends OrtcRequest
     }
 
     /**
-     * get post body
+     * get post body.
      *
      * @return array
      */
@@ -45,7 +45,7 @@ class BalancerUrlRequest extends OrtcRequest
     }
 
     /**
-     * get response handler
+     * get response handler.
      *
      * @return OrtcResponseHandler
      */
