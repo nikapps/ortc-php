@@ -164,7 +164,7 @@ http://messaging-public.realtime.co/api/download/php/2.1.0/ApiPhp.zip
 
 ## TODO
 
-* ~~add UnitTest (codeception or phpunit)~~ (Thanks to @moura137)
+* ~~add UnitTest (codeception or phpunit)~~ (Thanks to [@moura137](https://github.com/moura137))
 * subscribe to channel(s) by Ratchet/Nodejs/Icicle/Amphp
 * support mobile push notification (ios & android)
 * support presence channels
