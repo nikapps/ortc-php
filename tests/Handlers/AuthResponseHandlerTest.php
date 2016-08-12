@@ -1,15 +1,16 @@
 <?php
+
 namespace Tests\Handlers;
 
 use Mockery as m;
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Handlers\AuthResponseHandler;
+use Tests\TestCase;
 
 class AuthResponseHandlerTest extends TestCase
 {
     public function testImplementsAndHandle()
     {
-        $handler = new AuthResponseHandler;
+        $handler = new AuthResponseHandler();
         $this->assertInstanceOf('Nikapps\OrtcPhp\Handlers\OrtcResponseHandler', $handler);
 
         $futureResponse = m::mock('FutureResponse');

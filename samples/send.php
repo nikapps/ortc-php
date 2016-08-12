@@ -26,14 +26,12 @@ $channels[] = $testChannel;
 $ortc = new Ortc($ortcConfig);
 
 if (isset($_POST['message'])) {
-
     $sendMessageRequest = new SendMessageRequest();
     $sendMessageRequest->setAuthToken($authToken);
     $sendMessageRequest->setChannelName($testChannel->getName());
     $sendMessageRequest->setMessage($_POST['message']);
 
     $ortc->sendMessage($sendMessageRequest);
-
 } else {
     $authRequest = new AuthRequest();
     $authRequest->setAuthToken($authToken);

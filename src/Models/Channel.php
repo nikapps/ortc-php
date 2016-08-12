@@ -1,4 +1,5 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Models;
 
 class Channel
@@ -7,7 +8,7 @@ class Channel
     const PERMISSION_READ = 'r';
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string $name
      * @param string $permission
@@ -19,14 +20,14 @@ class Channel
     }
 
     /**
-     * name of channel
+     * name of channel.
      *
      * @var string
      */
     private $name;
 
     /**
-     * channel permission
+     * channel permission.
      *
      * @var string
      */
@@ -42,6 +43,7 @@ class Channel
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -61,6 +63,7 @@ class Channel
 
     /**
      * @param string $permission
+     *
      * @return $this
      */
     public function setPermission($permission)
@@ -71,7 +74,7 @@ class Channel
     }
 
     /**
-     * To string returned name
+     * To string returned name.
      *
      * @return string
      */

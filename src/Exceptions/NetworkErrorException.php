@@ -1,11 +1,11 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Exceptions;
 
 use GuzzleHttp\Exception\ClientException;
 
 class NetworkErrorException extends OrtcException
 {
-
     protected $message = 'Error in network connection';
 
     /**

@@ -1,15 +1,15 @@
 <?php
+
 namespace Tests\Handlers;
 
-use Mockery as m;
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Handlers\BalancerUrlResponseHandler;
+use Tests\TestCase;
 
 class BalancerUrlResponseHandlerTest extends TestCase
 {
     public function testImplementsAndHandle()
     {
-        $handler = new BalancerUrlResponseHandler;
+        $handler = new BalancerUrlResponseHandler();
         $this->assertInstanceOf('Nikapps\OrtcPhp\Handlers\OrtcResponseHandler', $handler);
 
         $url = 'var SOCKET_SERVER = "https://ortc-server.realtime.co ";';
@@ -24,7 +24,7 @@ class BalancerUrlResponseHandlerTest extends TestCase
     public function testHandleThrowInvalidBalancerUrlException($url)
     {
         $this->setExpectedException('Nikapps\OrtcPhp\Exceptions\InvalidBalancerUrlException');
-        $handler = new BalancerUrlResponseHandler;
+        $handler = new BalancerUrlResponseHandler();
 
         $response = $handler->handle($url);
     }

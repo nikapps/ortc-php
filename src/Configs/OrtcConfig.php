@@ -1,68 +1,67 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Configs;
 
 class OrtcConfig
 {
-
     /**
-     * Realtime.co balancer url
+     * Realtime.co balancer url.
      *
      * @var string
      */
     protected $balancerUrl = 'https://ortc-developers.realtime.co/server/2.1?appkey={APP_KEY}';
 
     /**
-     * Your realtime.co application key
+     * Your realtime.co application key.
      *
      * @var string
      */
-
     protected $applicationKey;
 
     /**
-     * Your realtime.co private key
+     * Your realtime.co private key.
      *
      * @var string
      */
     protected $privateKey;
 
     /**
-     * authentication path
+     * authentication path.
      *
      * @var string
      */
     protected $authenticationPath = '/authenticate';
 
     /**
-     * send push message to channel(s) path
+     * send push message to channel(s) path.
      *
      * @var string
      */
     protected $sendPath = '/send';
 
     /**
-     * maximum size of message chunk in bytes
+     * maximum size of message chunk in bytes.
      *
      * @var int
      */
     protected $maxChunkSize = 700;
 
     /**
-     * maximum size of message chunk in bytes
+     * maximum size of message chunk in bytes.
      *
      * @var int
      */
     protected $batchPoolSize = 5;
 
     /**
-     * pre concatenating string for every message chunks
+     * pre concatenating string for every message chunks.
      *
      * @var string
      */
     protected $preMessageString = '{RANDOM}_{PART}-{TOTAL_PARTS}_';
 
     /**
-     * verify ssl/tls certificate
+     * verify ssl/tls certificate.
      *
      * @var bool
      */
@@ -181,7 +180,7 @@ class OrtcConfig
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isVerifySsl()
     {
@@ -189,7 +188,7 @@ class OrtcConfig
     }
 
     /**
-     * @param boolean $verifySsl
+     * @param bool $verifySsl
      */
     public function setVerifySsl($verifySsl)
     {

@@ -49,9 +49,9 @@ $authResponse = $ortc->authenticate($authRequest);
 
 <script src="http://code.xrtml.org/xrtml-3.0.0.js"></script>
 <script>
-    var appkey = '<?php echo($ortcConfig->getApplicationKey()); ?>',
+    var appkey = '<?php echo $ortcConfig->getApplicationKey(); ?>',
         url = '<?php echo $url; ?>',
-        token = '<?php echo($authToken); ?>';
+        token = '<?php echo $authToken; ?>';
 
     xRTML.ready(function () {
 

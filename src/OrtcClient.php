@@ -1,4 +1,5 @@
 <?php
+
 namespace Nikapps\OrtcPhp;
 
 use GuzzleHttp\Exception\ClientException;
@@ -12,7 +13,6 @@ use Nikapps\OrtcPhp\Models\Requests\OrtcRequest;
 
 class OrtcClient
 {
-
     /**
      * @var \GuzzleHttp\Client
      */
@@ -29,12 +29,13 @@ class OrtcClient
     protected $baseUrl;
 
     /**
-     * execute single request
+     * execute single request.
      *
-     * @return Models\Responses\OrtcResponse
      * @throws UnauthorizedException
      * @throws NetworkErrorException
      * @throws InvalidBalancerUrlException
+     *
+     * @return Models\Responses\OrtcResponse
      */
     public function execute()
     {
@@ -47,7 +48,7 @@ class OrtcClient
             $response = $this->guzzleClient->send($guzzleRequest);
         } catch (ClientException $e) {
             if ($e->getResponse()->getStatusCode() == 401) {
-                throw new UnauthorizedException;
+                throw new UnauthorizedException();
             } else {
                 $networkErrorException = new NetworkErrorException();
                 $networkErrorException->setGuzzleClientException($e);
@@ -57,21 +58,23 @@ class OrtcClient
         }
 
         $handler = $this->request->getResponseHandler();
+
         return $handler->handle($response);
     }
 
     /**
-     * execute batch requests (post)
+     * execute batch requests (post).
+     *
+     * @throws BatchRequestException
      *
      * @return Models\Responses\OrtcResponse
-     * @throws BatchRequestException
      */
     public function batchExecute()
     {
         $guzzleRequests = $this->createBatchPostRequests();
 
         $results = Pool::batch($this->guzzleClient, $guzzleRequests, [
-            'pool_size' => $this->request->getOrtcConfig()->getBatchPoolSize()
+            'pool_size' => $this->request->getOrtcConfig()->getBatchPoolSize(),
         ]);
 
         if (count($results->getFailures()) > 0) {
@@ -82,6 +85,7 @@ class OrtcClient
         }
 
         $handler = $this->request->getResponseHandler();
+
         return $handler->handle($results);
     }
 
@@ -110,33 +114,34 @@ class OrtcClient
     }
 
     /**
-     * get request options for post requests
+     * get request options for post requests.
      *
      * @param array $postData
+     *
      * @return array
      */
     protected function getRequestOptionsForPost($postData)
     {
         return [
             'verify' => $this->request->getOrtcConfig()->isVerifySsl(),
-            'body'   => $postData
+            'body'   => $postData,
         ];
     }
 
     /**
-     * get request options for get requests
+     * get request options for get requests.
      *
      * @return array
      */
     protected function getRequestOptionsForGet()
     {
         return [
-            'verify' => $this->request->getOrtcConfig()->isVerifySsl()
+            'verify' => $this->request->getOrtcConfig()->isVerifySsl(),
         ];
     }
 
     /**
-     * create guzzle GET/POST request
+     * create guzzle GET/POST request.
      *
      * @return \GuzzleHttp\Message\Request
      */
@@ -158,7 +163,7 @@ class OrtcClient
     }
 
     /**
-     * create batch guzzle POST requests
+     * create batch guzzle POST requests.
      *
      * @return \GuzzleHttp\Message\Request[]
      */
@@ -173,6 +178,7 @@ class OrtcClient
                 $this->getRequestOptionsForPost($postData)
             );
         }
+
         return $requests;
     }
 
@@ -182,7 +188,7 @@ class OrtcClient
     protected function getRequestUrl()
     {
         if (!$this->request->isUrlAbsolute()) {
-            return $this->baseUrl . $this->request->getUrlPath();
+            return $this->baseUrl.$this->request->getUrlPath();
         } else {
             return $this->request->getUrlPath();
         }

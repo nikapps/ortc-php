@@ -1,4 +1,5 @@
 <?php
+
 namespace Nikapps\OrtcPhp;
 
 use Nikapps\OrtcPhp\Configs\OrtcConfig;
@@ -8,7 +9,6 @@ use Nikapps\OrtcPhp\Models\Requests\SendMessageRequest;
 
 class Ortc
 {
-
     /**
      * @var OrtcConfig
      */
@@ -25,7 +25,7 @@ class Ortc
     private $baseUrl;
 
     /**
-     * Ortc constructor
+     * Ortc constructor.
      *
      * @param OrtcConfig $ortcConfig
      */
@@ -67,10 +67,8 @@ class Ortc
         $this->guzzleClient = $guzzleClient;
     }
 
-
-
     /**
-     * prepare client before requesting
+     * prepare client before requesting.
      */
     protected function prepare()
     {
@@ -81,12 +79,13 @@ class Ortc
     }
 
     /**
-     * get balancer url
+     * get balancer url.
      *
-     * @return Models\Responses\BalancerUrlResponse
      * @throws Exceptions\NetworkErrorException
      * @throws Exceptions\UnauthorizedException
      * @throws Exceptions\InvalidBalancerUrlException
+     *
+     * @return Models\Responses\BalancerUrlResponse
      */
     public function getBalancerUrl()
     {
@@ -103,12 +102,14 @@ class Ortc
     }
 
     /**
-     * authenticate user
+     * authenticate user.
      *
      * @param AuthRequest $authRequest
-     * @return Models\Responses\AuthResponse
+     *
      * @throws Exceptions\NetworkErrorException
      * @throws Exceptions\UnauthorizedException
+     *
+     * @return Models\Responses\AuthResponse
      */
     public function authenticate(AuthRequest $authRequest)
     {
@@ -125,11 +126,13 @@ class Ortc
     }
 
     /**
-     * send message (push)
+     * send message (push).
      *
      * @param SendMessageRequest $sendMessageRequest
-     * @return Models\Responses\SendMessageResponse
+     *
      * @throws Exceptions\BatchRequestException
+     *
+     * @return Models\Responses\SendMessageResponse
      */
     public function sendMessage(SendMessageRequest $sendMessageRequest)
     {

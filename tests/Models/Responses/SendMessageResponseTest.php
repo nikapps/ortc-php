@@ -1,14 +1,15 @@
 <?php
+
 namespace Tests\Responses;
 
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Models\Responses\SendMessageResponse;
+use Tests\TestCase;
 
 class SendMessageResponseTest extends TestCase
 {
     public function testImplements()
     {
-        $response = new SendMessageResponse;
+        $response = new SendMessageResponse();
         $this->assertAttributeEquals(null, 'results', $response);
         $this->assertEquals(null, $response->getResults());
 

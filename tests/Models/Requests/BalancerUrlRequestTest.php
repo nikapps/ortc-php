@@ -1,19 +1,19 @@
 <?php
+
 namespace Tests\Models\Requests;
 
-use Mockery as m;
-use Tests\TestCase;
-use Nikapps\OrtcPhp\Models\Requests\BalancerUrlRequest;
 use Nikapps\OrtcPhp\Configs\OrtcConfig;
+use Nikapps\OrtcPhp\Models\Requests\BalancerUrlRequest;
+use Tests\TestCase;
 
 class BalancerUrlRequestTest extends TestCase
 {
     public function testImplementsDefault()
     {
-        $ortcConfig = new OrtcConfig;
+        $ortcConfig = new OrtcConfig();
         $ortcConfig->setApplicationKey('FOoB1r');
 
-        $request = new BalancerUrlRequest;
+        $request = new BalancerUrlRequest();
         $request->setOrtcConfig($ortcConfig);
 
         $this->assertInstanceOf('Nikapps\OrtcPhp\Models\Requests\OrtcRequest', $request);

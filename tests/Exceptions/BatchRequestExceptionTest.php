@@ -1,15 +1,16 @@
 <?php
+
 namespace Tests\Exceptions;
 
-use Tests\TestCase;
 use Nikapps\OrtcPhp\Exceptions\BatchRequestException;
+use Tests\TestCase;
 
 class BatchRequestExceptionTest extends TestCase
 {
     public function testImplements()
     {
-        $exception = new BatchRequestException;
-        $this->assertEquals("At least one request is failed", $exception->getMessage());
+        $exception = new BatchRequestException();
+        $this->assertEquals('At least one request is failed', $exception->getMessage());
 
         $this->assertAttributeEquals(null, 'results', $exception);
         $this->assertEquals(null, $exception->getResults());

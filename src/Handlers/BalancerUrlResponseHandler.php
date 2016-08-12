@@ -1,18 +1,18 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Handlers;
 
 use GuzzleHttp\Message\FutureResponse;
 use Nikapps\OrtcPhp\Exceptions\InvalidBalancerUrlException;
 use Nikapps\OrtcPhp\Models\Responses\BalancerUrlResponse;
-use Nikapps\OrtcPhp\Models\Responses\OrtcResponse;
 
 class BalancerUrlResponseHandler extends OrtcResponseHandler
 {
-
     /**
-     * handle response from guzzle
+     * handle response from guzzle.
      *
      * @param FutureResponse $response
+     *
      * @return BalancerUrlResponse
      */
     public function handle($response)
@@ -29,9 +29,10 @@ class BalancerUrlResponseHandler extends OrtcResponseHandler
     }
 
     /**
-     * validating response
+     * validating response.
      *
      * @param string $url
+     *
      * @throws InvalidBalancerUrlException
      */
     public function validate($url)
@@ -52,10 +53,12 @@ class BalancerUrlResponseHandler extends OrtcResponseHandler
     }
 
     /**
-     * parse body to find url
+     * parse body to find url.
      *
      * @param string $body
+     *
      * @throws InvalidBalancerUrlException
+     *
      * @return string
      */
     public function parseUrl($body)

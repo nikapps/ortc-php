@@ -1,4 +1,5 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Models\Requests;
 
 use Nikapps\OrtcPhp\Configs\OrtcConfig;
@@ -6,15 +7,13 @@ use Nikapps\OrtcPhp\Handlers\OrtcResponseHandler;
 
 abstract class OrtcRequest
 {
-
     /**
      * @var OrtcConfig
      */
     private $ortcConfig;
 
-
     /**
-     * get url path (not base url)
+     * get url path (not base url).
      *
      * @return string
      */
@@ -28,14 +27,14 @@ abstract class OrtcRequest
     abstract public function isPost();
 
     /**
-     * get post body
+     * get post body.
      *
      * @return array
      */
     abstract public function getPostData();
 
     /**
-     * get response handler
+     * get response handler.
      *
      * @return OrtcResponseHandler
      */
@@ -51,6 +50,7 @@ abstract class OrtcRequest
 
     /**
      * @param OrtcConfig $ortcConfig
+     *
      * @return $this
      */
     public function setOrtcConfig($ortcConfig)

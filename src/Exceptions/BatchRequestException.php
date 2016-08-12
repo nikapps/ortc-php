@@ -1,10 +1,10 @@
 <?php
+
 namespace Nikapps\OrtcPhp\Exceptions;
 
 class BatchRequestException extends OrtcException
 {
-
-    protected $message = "At least one request is failed";
+    protected $message = 'At least one request is failed';
 
     /**
      * @var \GuzzleHttp\BatchResults
