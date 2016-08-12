@@ -15,9 +15,9 @@ class Ortc
     private $ortcConfig;
 
     /**
-     * @var \GuzzleHttp\Client
+     * @var OrtcConfig
      */
-    private $guzzleClient;
+    private $ortcClient;
 
     /**
      * @var string
@@ -28,14 +28,17 @@ class Ortc
      * Ortc constructor.
      *
      * @param OrtcConfig $ortcConfig
+     * @param OrtcClient $ortcClient
      */
-    public function __construct(OrtcConfig $ortcConfig)
+    public function __construct(OrtcConfig $ortcConfig, OrtcClient $ortcClient)
     {
         $this->ortcConfig = $ortcConfig;
-        $this->guzzleClient = new \GuzzleHttp\Client();
+        $this->ortcClient = $ortcClient;
     }
 
     /**
+     * Return Base Url
+     *
      * @return string
      */
     public function getBaseUrl()
@@ -44,6 +47,8 @@ class Ortc
     }
 
     /**
+     * Set Base Url
+     *
      * @param string $baseUrl
      */
     public function setBaseUrl($baseUrl)
@@ -52,23 +57,19 @@ class Ortc
     }
 
     /**
+     * Return GuzzleHttp Client
+     *
      * @return \GuzzleHttp\Client
      */
     public function getGuzzleClient()
     {
-        return $this->guzzleClient;
-    }
-
-    /**
-     * @param \GuzzleHttp\Client $guzzleClient
-     */
-    public function setGuzzleClient($guzzleClient)
-    {
-        $this->guzzleClient = $guzzleClient;
+        return $this->ortcClient->getGuzzleClient();
     }
 
     /**
      * prepare client before requesting.
+     *
+     * @return void
      */
     protected function prepare()
     {
@@ -94,11 +95,9 @@ class Ortc
         $balancerUrlRequest = new BalancerUrlRequest();
         $balancerUrlRequest->setOrtcConfig($this->ortcConfig);
 
-        $ortcClient = new OrtcClient();
-        $ortcClient->setRequest($balancerUrlRequest);
-        $ortcClient->setGuzzleClient($this->guzzleClient);
+        $this->ortcClient->setRequest($balancerUrlRequest);
 
-        return $ortcClient->execute();
+        return $this->ortcClient->execute();
     }
 
     /**
@@ -117,12 +116,10 @@ class Ortc
 
         $authRequest->setOrtcConfig($this->ortcConfig);
 
-        $ortcClient = new OrtcClient();
-        $ortcClient->setRequest($authRequest);
-        $ortcClient->setGuzzleClient($this->guzzleClient);
-        $ortcClient->setBaseUrl($this->baseUrl);
+        $this->ortcClient->setRequest($authRequest);
+        $this->ortcClient->setBaseUrl($this->baseUrl);
 
-        return $ortcClient->execute();
+        return $this->ortcClient->execute();
     }
 
     /**
@@ -140,11 +137,9 @@ class Ortc
 
         $sendMessageRequest->setOrtcConfig($this->ortcConfig);
 
-        $ortcClient = new OrtcClient();
-        $ortcClient->setRequest($sendMessageRequest);
-        $ortcClient->setGuzzleClient($this->guzzleClient);
-        $ortcClient->setBaseUrl($this->baseUrl);
+        $this->ortcClient->setRequest($sendMessageRequest);
+        $this->ortcClient->setBaseUrl($this->baseUrl);
 
-        return $ortcClient->batchExecute();
+        return $this->ortcClient->batchExecute();
     }
 }
