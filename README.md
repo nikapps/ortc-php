@@ -33,10 +33,16 @@ Before you can call any api call, you should set your credentials.
 
 ~~~php
 $ortcConfig = new \Nikapps\OrtcPhp\Configs\OrtcConfig();
-
 $ortcConfig->setApplicationKey('YOUR_APPLICATION_KEY'); //you application key
 $ortcConfig->setPrivateKey('YOUR_PRIVATE_KEY'); //Your private key
 $ortcConfig->setVerifySsl(true); //verify ssl/tls certificate
+~~
+
+You should instanced OrtcClient with Http Client
+
+~~~php
+
+$ortcClient = new \Nikapps\OrtcPhp\OrtcClient(new \GuzzleHttp\Client());
 ~~~
 
 #### Done!
@@ -48,7 +54,7 @@ $ortcConfig->setVerifySsl(true); //verify ssl/tls certificate
 This package automatically get balancer url (best available server), but if you want fetch a new balancer url manually:
 
 ~~~php
-$ortc = new \Nikapps\OrtcPhp\Ortc($ortcConfig);
+$ortc = new \Nikapps\OrtcPhp\Ortc($ortcConfig, $ortcClient);
 
 $balancerUrl = $ortc->getBalancerUrl();
 
@@ -91,7 +97,7 @@ $authRequest->setExpireTime(5 * 60); //token ttl (expiration time) in seconds
 $authRequest->setPrivate(true); //Indicates whether the authentication token is private
 $authRequest->setChannels($channels);
 
-$ortc = new \Nikapps\OrtcPhp\Ortc($ortcConfig);
+$ortc = new \Nikapps\OrtcPhp\Ortc($ortcConfig, $ortcClient);
 $ortc->authenticate($authRequest);
 ~~~
 
@@ -106,7 +112,7 @@ $sendMessageRequest->setAuthToken($authToken);
 $sendMessageRequest->setChannelName('CHANNEL_NAME');
 $sendMessageRequest->setMessage('YOUR_MESSAGE');
 
-$ortc = new \Nikapps\OrtcPhp\Ortc($ortcConfig);
+$ortc = new \Nikapps\OrtcPhp\Ortc($ortcConfig, $ortcClient);
 $ortc->sendMessage($sendMessageRequest);
 ~~~
 

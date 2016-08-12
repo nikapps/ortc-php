@@ -2,6 +2,7 @@
 
 namespace Nikapps\OrtcPhp;
 
+use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Message\FutureResponse;
 use GuzzleHttp\Pool;
@@ -14,7 +15,7 @@ use Nikapps\OrtcPhp\Models\Requests\OrtcRequest;
 class OrtcClient
 {
     /**
-     * @var \GuzzleHttp\Client
+     * @var GuzzleClient
      */
     protected $guzzleClient;
 
@@ -27,6 +28,16 @@ class OrtcClient
      * @var string
      */
     protected $baseUrl;
+
+    /**
+     * Construct
+     *
+     * @param GuzzleClient $guzzleClient
+     */
+    public function __construct(GuzzleClient $guzzleClient)
+    {
+        $this->guzzleClient = $guzzleClient;
+    }
 
     /**
      * execute single request.
@@ -90,22 +101,28 @@ class OrtcClient
     }
 
     /**
-     * @param \GuzzleHttp\Client $guzzleClient
+     * Return GuzzleClient
+     *
+     * @return GuzzleClient
      */
-    public function setGuzzleClient($guzzleClient)
+    public function getGuzzleClient()
     {
-        $this->guzzleClient = $guzzleClient;
+        return $this->guzzleClient;
     }
 
     /**
+     * Set OrtcRequest
+     *
      * @param OrtcRequest $request
      */
-    public function setRequest($request)
+    public function setRequest(OrtcRequest $request)
     {
         $this->request = $request;
     }
 
     /**
+     * Set Base Url
+     *
      * @param string $baseUrl
      */
     public function setBaseUrl($baseUrl)
@@ -184,6 +201,8 @@ class OrtcClient
 
     /**
      * combine path url & baseUrl if needed!
+     *
+     * @param string
      */
     protected function getRequestUrl()
     {
